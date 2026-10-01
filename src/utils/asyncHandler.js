@@ -8,9 +8,9 @@
 
 export { asyncHandler }
 
-const asyncHandler = () => {}
-const asyncHandler = (func) => () => {}
-const asyncHandler = (func) => async () => {}
+//const asyncHandler = () => {}
+//const asyncHandler = (func) => () => {}
+//const asyncHandler = (func) => async () => {}
 
 const asyncHandler = (fn) => async (res, req, next) => {
     try {
