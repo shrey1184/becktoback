@@ -21,3 +21,4 @@ const registerUser = asyncHandler(async (req, res) => {
 
 
 export { registerUser };
+//Commented coz of pause
