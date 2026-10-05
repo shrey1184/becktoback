@@ -22,3 +22,4 @@ const registerUser = asyncHandler(async (req, res) => {
 
 export { registerUser };
 //Commented coz of pause
+//added one more for checking
