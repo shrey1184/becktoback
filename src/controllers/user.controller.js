@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
     ) {
         throw new ApiError(400, "All fields are required");
     }
-    User.findOne({
+    const condition = await User.findOne({
         $or: [{email}, {username}]
     })
 
@@ -63,15 +63,15 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 
-//get user details
-//validation - not empty
-//check if user exist or not
-//check for images
-//uploadthem to cloudinary, avatar
+// get user details
+// validation - not empty
+// check if user exist or not
+// check for images
+// upload them to cloudinary, avatar
 // create user object - create user in db
 // remove pasword and refresh token from user object
-//check for user creation
-//return res
+// check for user creation
+// return res
 
 
 export { registerUser };

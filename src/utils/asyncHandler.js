@@ -12,14 +12,14 @@ export { asyncHandler }
 //const asyncHandler = (func) => () => {}
 //const asyncHandler = (func) => async () => {}
 
-const asyncHandler = (fn) => async (res, req, next) => {
+const asyncHandler = (fn) => async (req, res, next) => {
     try {
-        await fn(res, req, next)
+        await fn(req, res, next)
     }
-    catch (error) {
+    catch(error) {
         res.status(error.code || 500).json({ 
             success: false, 
-            message: err.message 
+            message: error.message 
         });
     }
 }

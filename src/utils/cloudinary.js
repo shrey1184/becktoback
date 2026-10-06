@@ -1,15 +1,17 @@
 import { v2 as cloudinary } from 'cloudinary';
 import fs from 'fs';
+import dotenv from 'dotenv';
 
+dotenv.config();
 (async function() {
 
     // Configuration
     cloudinary.config({ 
-        cloud_name: CLOUDINARY_CLOUD_NAME, 
-        api_key: CLOUDINARY_API_KEY, 
-        api_secret: CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
+        api_key: process.env.CLOUDINARY_API_KEY, 
+        api_secret: process.env.CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
     });
-});
+})();
 
 const uploadOnCloudinary = async (localFilePath) => {
     try {
@@ -18,7 +20,7 @@ const uploadOnCloudinary = async (localFilePath) => {
         const uploadResult = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "auto"
         });
-        console.log("file uploaded to cloudinary successfully", response.url);
+        console.log("file uploaded to cloudinary successfully", uploadResult.url);
         return uploadResult;
     }
     catch (error) {
@@ -27,6 +29,4 @@ const uploadOnCloudinary = async (localFilePath) => {
     }
 }
 
-cloudinary.v2.uploader.upload("https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg",
-    {public_id: "olympic_flag"}, 
-    function(error, result) {console.log(result, error)});
+export { uploadOnCloudinary };
